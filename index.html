@@ -42,42 +42,85 @@
         color: #fff;
       }
 
-      #messages {
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
-      }
-      #messages > li {
+      #messages > div {
         padding: 0.5rem 1rem;
+        height: 29px;
       }
-      #messages > li:nth-child(odd) {
-        background: #ebe2e2;
+      #messages > span {
+        margin-bottom: '12px';
+        border: none;
+        padding: 0 1rem;
+        margin: 0.25rem;
+        border-radius: 3px;
+        outline: none;
+        color: #fff;
+      }
+
+      #messages > div {
+        padding: 0.5rem 1rem;
+        height: 29px;
+      }
+      #messages > div:nth-child(odd) {
+      }
+
+      .img_cont_msg {
+        height: 40px;
+        width: 40px;
+        display: -webkit - box;
+      }
+      .user_img_msg {
+        height: 40px;
+        width: 40px;
+        border: 1.5px solid #f5f6fa;
+        float: right;
+        border-radius: 50%;
+        margin: -7px;
       }
     </style>
   </head>
   <body>
-    <ul id="messages"></ul>
+    <div id="messages"></div>
     <form id="form" action="">
-      <input id="input" autocomplete="off" />
+      <input id="input" autocomplete="off" /><label html> </label>
       <button>Send</button>
     </form>
   </body>
   <script src="/socket.io/socket.io.js"></script>
   <script>
-    var from = window.prompt('Enter your name: ');
-    var to = window.prompt('Enter friend name: ');
-    var socket = io();
-    var form = document.getElementById('form');
-    var input = document.getElementById('input');
+    const from = window.prompt('Enter your name: ');
+    const to = window.prompt('Enter friend name: ');
+    const socket = io();
+    const form = document.getElementById('form');
+    const input = document.getElementById('input');
+
     form.addEventListener('submit', (e) => {
       e.preventDefault();
 
       if (input.value) {
         socket.emit('chat message', { text: input.value, to });
-        var item = document.createElement('li');
-        item.textContent = input.value;
+        console.log(to.value);
+        const item = document.createElement('div');
+        const img = document.createElement('img');
+        const span = document.createElement('span');
+
+        img.className = 'user_img_msg';
+        img.style.float = 'left';
+        img.src = 'https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg';
+        span.textContent = input.value;
+        span.style.margin = '18px';
+        span.style.marginTop = 'auto';
+        span.style.marginBottom = 'auto';
+        span.style.marginLeft = '10px';
+        span.style.borderRadius = '25px';
+        span.style.backgroundColor = '#82ccdd';
+        span.style.padding = '10px';
+        span.style.position = 'relative';
         item.style.color = 'blue';
+        item.style.marginBottom = '-11px';
+        item.style.marginBottom = '12px';
         messages.appendChild(item);
+        item.appendChild(span);
+        item.appendChild(img);
         window.scrollTo(0, document.body.scrollHeight);
         input.value = '';
       }
@@ -86,10 +129,31 @@
       socket.emit('name', from);
     });
     socket.on('chat message', (msg) => {
-      var item = document.createElement('li');
-      item.textContent = msg;
+      const item = document.createElement('div');
+      const img = document.createElement('img');
+      const span = document.createElement('span');
+
+      img.className = 'user_img_msg';
+      img.style.float = 'right';
+      img.src =
+        'https://static.turbosquid.com/Preview/001214/650/2V/boy-cartoon-3D-model_D.jpg';
+      item.appendChild(span);
+      span.textContent = msg;
+      span.style.margin = '18px';
+      span.style.marginTop = 'auto';
+      span.style.marginBottom = 'auto';
+      span.style.marginLeft = '10px';
+      span.style.borderRadius = '25px';
+      span.style.backgroundColor = '#78e08f';
+      span.style.padding = '10px';
+      span.style.position = 'relative';
+      span.style.margin = '18px';
       item.style.color = 'red';
+      item.style.textAlign = 'right';
+      item.style.marginBottom = '-11px';
+      item.style.marginBottom = '12px';
       messages.appendChild(item);
+      item.appendChild(img);
       window.scrollTo(0, document.body.scrollHeight);
     });
   </script>
