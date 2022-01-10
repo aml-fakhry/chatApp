@@ -41,6 +41,15 @@ io.on('connection', (socket) => {
     let toSocket = clients.get(msg.to);
     toSocket.emit('chat message', msg.text);
   });
+  socket.on('typing', function (data) {
+    // send an event to everyone but the person who emitted the typing event to the server
+    socket.broadcast.emit('typing', data);
+  });
+
+  socket.on('noTyping', function (data) {
+    // send an event to everyone but the person who emitted the typing event to the server
+    socket.broadcast.emit('noTyping', data);
+  });
 });
 
 // make the server listen to requests
