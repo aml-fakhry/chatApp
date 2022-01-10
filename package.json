@@ -1,0 +1,34 @@
+{
+  "name": "chatapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aml-fakhry/chataap.git"
+  },
+  "keywords": [
+    "chat_app"
+  ],
+  "author": "aml_fakhri",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/aml-fakhry/chataap/issues"
+  },
+  "homepage": "https://github.com/aml-fakhry/chataap#readme",
+  "dependencies": {
+    "ejs": "^3.1.6",
+    "express": "^4.17.2",
+    "nodemon": "^2.0.15",
+    "socket.io": "^4.4.1"
+  },
+  "optionalDependencies": {
+    "bufferutil": "^4.0.6",
+    "utf-8-validate": "^5.0.8"
+  }
+}
