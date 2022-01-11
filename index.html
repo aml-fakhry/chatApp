@@ -29,6 +29,10 @@
         border-radius: 2rem;
         margin: 0.25rem;
       }
+      .card-header {
+        border-radius: 15px 15px 0 0 !important;
+        border-bottom: 0 !important;
+      }
       #input:focus {
         outline: none;
       }
@@ -76,10 +80,108 @@
         border-radius: 50%;
         margin: -7px;
       }
+
+      body,
+      html {
+        height: 100%;
+        margin: 0;
+        background: #7f7fd5;
+        background: -webkit-linear-gradient(
+          to right,
+          #91eae4,
+          #86a8e7,
+          #7f7fd5
+        );
+        background: linear-gradient(to right, #91eae4, #86a8e7, #7f7fd5);
+      }
+
+      .user_img {
+        height: 40px;
+        width: 40px;
+        border: 1.5px solid #f5f6fa;
+        border-radius: 50%;
+      }
+      .user_img_msg {
+        height: 40px;
+        width: 40px;
+        border: 1.5px solid #f5f6fa;
+      }
+      .img_cont {
+        position: relative;
+        height: 73px;
+        width: 69px;
+      }
+      .img_cont_msg {
+        height: 40px;
+        width: 40px;
+      }
+      .online_icon {
+        position: absolute;
+        height: 6px;
+        width: 5px;
+        background-color: #3ace20;
+        border-radius: 50%;
+        bottom: 2.2em;
+        right: 1.4em;
+        border: 1.5px solid white;
+      }
+      .offline {
+        background-color: #c23616 !important;
+      }
+      .user_info {
+        margin-top: auto;
+        margin-bottom: auto;
+        font-size: 20px;
+        color: #491e1e;
+        font-family: sans-serif;
+      }
+      #userInfo {
+        font-size: 20px;
+        color: rgb(197, 190, 216);
+      }
+      .user_info p {
+        font-size: 10px;
+        color: rgba(255, 255, 255, 0.6);
+      }
+      .typing {
+        font-style: oblique;
+        font-family: fangsong;
+        font-size: 19px;
+        margin-left: 10px;
+        color: rgb(117, 133, 117);
+      }
+      .msg_head {
+        position: sticky;
+        top: 0;
+        z-index: 1;
+      }
+      .highlight {
+        height: 45px;
+        background-color: #2d4aa9;
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+      }
     </style>
   </head>
   <body>
-    <div id="messages"><div id="typing"></div></div>
+    <div class="msg_head">
+      <div class="highlight">
+        <br />
+        <div class="img_cont">
+          <img
+            src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg"
+            class="user_img"
+          />
+          <span class="online_icon"></span>
+        </div>
+        <div class="user_info">
+          <span id="userInfo"></span>
+          <div id="typing"></div>
+        </div>
+      </div>
+    </div>
+    <div id="messages"><br /></div>
     <form id="form" action="">
       <input
         id="input"
@@ -101,6 +203,7 @@
     const form = document.getElementById('form');
     const input = document.getElementById('input');
     const typing = document.getElementById('typing');
+    userInfo.textContent = from;
     input.addEventListener('input', function () {
       socket.emit('typing', to.value);
     });
@@ -111,7 +214,7 @@
 
     // when we receive a typing event, show that a user is typing
     socket.on('typing', function (data) {
-      typing.innerHTML = '<p><em>is typing......</em></p>';
+      typing.innerHTML = '<span class ="typing">is typing......</span>';
     });
     // when we receive a typing event, show that a user is typing
     socket.on('noTyping', function (data) {
@@ -146,7 +249,7 @@
         messages.appendChild(item);
         item.appendChild(span);
         item.appendChild(img);
-        window.scrollTo(0, document.body.scrollHeight);
+        // window.scrollTo(1, document.body.scrollHeight);
         input.value = '';
       }
     });
@@ -180,7 +283,7 @@
       item.style.marginBottom = '12px';
       messages.appendChild(item);
       item.appendChild(img);
-      window.scrollTo(0, document.body.scrollHeight);
+      // window.scrollTo(1, document.body.scrollHeight);
     });
   </script>
 </html>
