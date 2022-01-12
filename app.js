@@ -19,16 +19,11 @@ const io = new Server(httpServer);
 
 // create a route for the app
 app.get('/', (req, res) => {
-  res.send('Hello World');
-});
-app.get('/ejs', (req, res, next) => {
-  let msgs = [];
-  res.render('index1.ejs', {
-    data: req.body,
-  });
-});
-app.get('/send', (req, res) => {
   res.sendFile(path.join(__dirname, '/index.html'));
+});
+
+app.get('/room', (req, res) => {
+  res.sendFile(path.join(__dirname, '/room.html'));
 });
 
 let clients = new Map();
@@ -52,6 +47,14 @@ io.on('connection', (socket) => {
     // send an event to everyone but the person who emitted the typing event to the server
     socket.broadcast.emit('noTyping', data);
   });
+
+  // socket.on('room', function (room) {
+  //   let toSocket = clients.get(msg.to);
+  //   // if (socket.room) toSocket.leave(socket.room);
+
+  //   toSocket.room = room;
+  //   toSocket.join(room);
+  // });
 
   socket.on('disconnect', () => {
     console.log('user disconnected');

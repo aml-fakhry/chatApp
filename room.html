@@ -216,7 +216,7 @@
     socket.on('typing', function (data) {
       typing.innerHTML = '<span class ="typing">is typing......</span>';
     });
-    // when we receive a no typing event, show that a user is typing
+    // when we receive a typing event, show that a user is typing
     socket.on('noTyping', function (data) {
       typing.innerHTML = '';
     });
@@ -255,7 +255,10 @@
     });
     socket.on('connect', () => {
       socket.emit('name', from);
+      // Connected, let's sign-up for to receive messages for this room
+      socket.emit('room', room);
     });
+
     socket.on('chat message', (msg) => {
       const item = document.createElement('div');
       const img = document.createElement('img');
