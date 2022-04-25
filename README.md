@@ -164,24 +164,11 @@ http://localhost:5555
 
 ```
 
+```
+
 ## License
 
 This project is licensed under the Aml Fakhri License - see the LICENSE.md file for details
-
-## Project structure.
-
-```
-
-.
-┣ 📂views
-┃ ┣ 📜index.html
-┃ ┗ 📜room.html
-┣ 📜.gitignore
-┣ 📜app.js
-┣ 📜LICENSE
-┣ 📜package.json
-┣ 📜README.md
-┗ 📜yarn.lock
 
 ```
 
@@ -191,5 +178,4 @@ Contributors names and contact info
 
 ex. Aml fakhri @aml-fakhry
 ex. [@aml_fakhri](amlfakhry13@gmail.com)
-
 ```
