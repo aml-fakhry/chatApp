@@ -4,6 +4,12 @@
 
 Create real time communication channel between two user.
 
+### chatApp video
+
+> can see video of chat app 😎 https://drive.google.com/file/d/1I9H_mKptXuFyXZgtRTGI3MaGjsHGZs8e/view?usp=sharing
+
+https://user-images.githubusercontent.com/59959472/165110800-06f1c26e-b7dc-48d8-8b78-5939c79f0bc1.mp4
+
 ### Installing
 
 - You cane download my project.
@@ -48,11 +54,7 @@ yarn dev
 http://localhost:5555
 ```
 
-### chatApp video
 
-> can see video of chat app 😎 https://drive.google.com/file/d/1I9H_mKptXuFyXZgtRTGI3MaGjsHGZs8e/view?usp=sharing
-
-https://user-images.githubusercontent.com/59959472/165110800-06f1c26e-b7dc-48d8-8b78-5939c79f0bc1.mp4
 
 ### Views
 
